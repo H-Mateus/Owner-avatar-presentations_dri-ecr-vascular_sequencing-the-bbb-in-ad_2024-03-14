@@ -1,0 +1,107 @@
+---
+title: "Sequencing the Blood Brain<br>Barrier in Alzheimer's Disease"
+#subtitle: 'A *very* brief overview'
+author: '<a href="https://gmbernardoharrington.netlify.app/" style="color: #fa2d6e">Gabriel Mateus Bernardo Harrington</a>'
+date: '2024-03-14'
+date-modified: '`{r} Sys.Date()`'
+date-format: iso
+institute: 'Research Associate | Webber Group'
+format: 
+  ukdri-revealjs:
+    smaller: true
+    multiplex: true
+    footer: |
+        Made with the [UKDRI Quarto template](https://github.com/H-Mateus/quarto-ukdri-theme) by [GMBH](https://gmbernardoharrington.netlify.app/).
+        Code available on GitHub [here](https://github.com/H-Mateus/presentations_dri-ecr-vascular_sequencing-the-bbb-in-ad_2024-03-14).
+        Licensed under [CC-BY-SA](http://creativecommons.org/licenses/by-sa/4.0/)
+embed-resources: true
+bibliography: references.bib
+#csl: /Users/mateusbernardo-harrington/Documents/citation_styles/nature.csl
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(librarian)
+pkg <- c("tidyverse", "gt", "leaflet", "DT")
+shelf(pkg)
+rm(pkg)
+```
+
+```{r}
+#| label: dri-hexcolours
+#| include: false
+dri_hexcolours <- c("dark_blue" = "#00326e", "light_grey" = "#c4d1d9",
+                    "dark_grey" = "#415767", "sky_blue" = "#0ac8ff",
+                    "petrol_blue" = "007faf", "brigth_blue" = "4682ff",
+                    "cobalt" = "325ad7", "violet" = "#461e8c", "fuchsia" = "#fa2d6e",
+                    "ruby" = "#aa0050", "yellow" = "#ffed00")
+```
+
+## Project design
+
+::: columns
+::: {.column width="35%"}
+-   Sequencing post-mortem human pre-frontal cortex
+-   20 cases and 20 controls
+-   Sample prep that separates the vascular fraction and the parenchymal fraction of the tissue
+    -   So 2 per donor - 80 samples sequenced
+-   10X seq
+-   Processed data with [scFlow](https://nf-co.re/scflow/dev/docs/usage)
+:::
+
+::: {.column width="65%"}
+[![](images/parenchyma-vascular-cartoon.jpg){fig-alt="A cartoon deliniating the parenchyma and vascular components of the brain" width="100%"}](https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2018.00239/full)
+:::
+:::
+
+::: aside
+Adapted from @warren_beyond_2018
+:::
+
+## UMAP
+
+![](images/scflow_umap_manually_annotated.png){fig-alt="UMAP plot coloured by manual cell type annotations. Similarly to the prior UMAP plots, the vascular cell types are in the large cluster to the right, and the neuronal cells are in the other clusters." fig-align="center" width="80%"}
+
+## MAGMA
+
+::: r-stack
+![](images/heatmap_level1.png){.fragment .fade-out}
+
+![](images/heatmap_level2.png){.fragment}
+:::
+
+<!-- define the final slide  -->
+
+## Thanks for listening {.final-slide background-image="_extensions/H-Mateus/ukdri/title_background.png" style="color: #0ac8ff;"}
+
+```{r}
+#| include: false
+code <- qrcode::qr_code("https://h-mateus.github.io/presentations_dri-ecr-vascular_sequencing-the-bbb-in-ad_2024-03-14/2024-02-26_ecr-vascular-meeting_sequencing-the-bbb-in-ad.html")
+qrcode::generate_svg(code, filename = here::here("images/qrcode.svg"))
+```
+
+::: columns
+::: {.column width="70%"}
+-   If you know anything about that odd endothelial/mural cluster please talk to me!
+-   Slides are here: [https://h-mateus.github.io/presentations_dri-ecr-vascular_sequencing-the-bbb-in-ad_2024-03-14/2024-02-26_ecr-vascular-meeting_sequencing-the-bbb-in-ad.html](https://h-mateus.github.io/presentations_dri-ecr-vascular_sequencing-the-bbb-in-ad_2024-03-14/2024-02-26_ecr-vascular-meeting_sequencing-the-bbb-in-ad.html)
+:::
+
+::: {.column width="30%"}
+![](images/qrcode.svg)
+:::
+:::
+
+<!--Use the following to add further logos to the title/final slide-->
+
+<!--Adjust sizing in the CSS file-->
+
+<!-- ::: title-logo-1 -->
+
+<!-- ::: -->
+
+<!-- ::: title-logo-2 -->
+
+<!-- ::: -->
+
+## References
